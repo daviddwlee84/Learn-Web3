@@ -1,0 +1,11 @@
+{
+  "name": "tornado_cash_fee",
+  "version": "1.0.0",
+  "description": "Used to analysis Tornado Cash (TORN) from blockchain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Da-Wei Lee",
+  "license": "ISC"
+}
