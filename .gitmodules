@@ -1,0 +1,3 @@
+[submodule "Courses/AlchemyUniversity/Learn_Ethereum_Development/Week_1_Project-ECDSA_Node"]
+	path = Courses/AlchemyUniversity/Learn_Ethereum_Development/Week_1_Project-ECDSA_Node
+	url = https://github.com/daviddwlee84/ECDSA-Node.git
