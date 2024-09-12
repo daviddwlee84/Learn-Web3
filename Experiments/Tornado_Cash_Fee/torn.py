@@ -18,10 +18,18 @@ TORNADO_CASH_CONTRACT = os.getenv("TORN_CONTRACT_ADDRESS")
 TORNADO_ABI = json.loads(os.getenv("TORN_ABI"))
 
 contract = web3.eth.contract(address=TORNADO_CASH_CONTRACT, abi=TORNADO_ABI)
-search_blocks = 2
-end_block_number = web3.eth.get_block_number()
+search_blocks = 100
 
-# debug
+# end_block_number = web3.eth.get_block_number()
+
+# Internal Transaction
+# https://etherscan.io/tx/0xdbd9ce11fd473aca558dc3ea29b5167af1ff459eddc38b5717acad97d210c234
+# end_block_number = 20732642
+
+# Normal Transaction
+# https://etherscan.io/tx/0xb37d8a3c7b8f3a39f9bd12d3837dc6cb427fd59587e499481976d01edd841d51
+end_block_number = 20732795
+
 end_block = web3.eth.get_block(end_block_number, full_transactions=True)
 print(datetime.fromtimestamp(end_block.timestamp))
 print(f"https://etherscan.io/block/{end_block.number}")
@@ -42,6 +50,7 @@ import ipdb
 
 ipdb.set_trace()
 
+torn_only = True
 results = []
 
 for block_num in tqdm(
@@ -54,7 +63,7 @@ for block_num in tqdm(
     for tx in tqdm(
         block.transactions, desc=f"Transactions of Block {block.number}", position=1
     ):
-        if tx.to == contract.address or True:  # debug
+        if tx.to == contract.address or not torn_only:
             tx_receipt = web3.eth.get_transaction_receipt(tx.hash)
 
             if "effectiveGasPrice" in tx_receipt:
@@ -76,8 +85,9 @@ for block_num in tqdm(
             )
 
 result_df = pd.DataFrame(results)
-result_df["fee (ETH)"] = result_df["fee"].apply(web3.from_wei, unit="ether")
-print(result_df)
+if not result_df.empty:
+    result_df["fee (ETH)"] = result_df["fee"].apply(web3.from_wei, unit="ether")
+    print(result_df)
 
 
 import ipdb

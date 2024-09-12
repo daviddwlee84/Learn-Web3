@@ -16,10 +16,32 @@
 
 ---
 
+What is Fees
+
 - [Token Terminal | Fundamentals for crypto](https://tokenterminal.com/terminal/metrics/fees)
 - [Fees – Weekly fundamentals #59 | Token Terminal](https://tokenterminal.com/resources/weekly-fundamentals/59#product-tip-of-the-week)
 
 ---
 
+Method ID
+
 - [Etherscan Information Center | Method ID](https://info.etherscan.com/what-is-method-id/)
 - [Ethereum Signature Database](https://www.4byte.directory/)
+
+---
+
+Mempool
+
+- [How to access Ethereum Mempool | QuickNode](https://www.quicknode.com/guides/ethereum-development/transactions/how-to-access-ethereum-mempool)
+- [Geth API — web3.py 7.2.0 documentation](https://web3py.readthedocs.io/en/latest/web3.geth.html#web3.geth.txpool.TxPool.content)
+
+---
+
+Internal Transaction
+
+- [web3js - How to get contract internal transactions - Ethereum Stack Exchange](https://ethereum.stackexchange.com/questions/3417/how-to-get-contract-internal-transactions)
+  - Instrumented EVM
+    - [ethereumjs/ethereumjs-monorepo: Monorepo for the Ethereum VM TypeScript Implementation](https://github.com/ethereumjs/ethereumjs-monorepo)
+  - Others' API (e.g. Etherscan)
+- [Internal Transaction Monitoring Is The Missing Puzzle Piece To Understanding Your Smart Contract Activity](https://www.blocknative.com/blog/eth-internal-transactions)
+- [Internal Transactions FAQs | Moralis Web3 Documentation](https://docs.moralis.io/web3-data-api/evm/internal-transactions)
