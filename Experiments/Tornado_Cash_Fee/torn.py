@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import os
 import json
-from web3 import Web3
+from web3 import Web3, exceptions
 from tqdm import tqdm
 from datetime import datetime
 import pandas as pd
@@ -45,6 +45,24 @@ print(
     "Gwei",
 )
 print(web3.from_wei(fee, unit="ether"), "ETH")
+
+
+event_filter = {
+    "fromBlock": web3.eth.block_number - 1000,
+    "toBlock": web3.eth.block_number,
+    "address": contract.address,
+    # 'topics': [fee_event_signature],  # Uncomment and set if filtering by specific event
+}
+# ValueError: {'code': -32005, 'data': {'from': '0xAF16A7', 'limit': 10000, 'to': '0xB45841'}, 'message': 'query returned more than 10000 results. Try with this block range [0xAF16A7, 0xB45841].'}
+logs = web3.eth.get_logs(event_filter)
+processed_logs = []
+for log in tqdm(logs, "Process Logs of Event"):
+    try:
+        # Will somehow filter valid Transfer events
+        processed_logs.append(contract.events.Transfer().process_log(log))
+    except exceptions.MismatchedABI:
+        # web3.exceptions.MismatchedABI: The event signature did not match the provided ABI
+        pass
 
 import ipdb
 
