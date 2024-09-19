@@ -3,4 +3,4 @@
 	url = https://github.com/daviddwlee84/ECDSA-Node.git
 [submodule "Courses/AlchemyUniversity/Learn_Ethereum_Development/Week_2_Project-Merkle_Tree_Gift_List"]
 	path = Courses/AlchemyUniversity/Learn_Ethereum_Development/Week_2_Project-Merkle_Tree_Gift_List
-	url = https://github.com/alchemyplatform/GiftList.git
+	url = https://github.com/daviddwlee84/GiftList.git
