@@ -1,3 +1,4 @@
+const { formatEther } = require('ethers');
 let axios = require('axios');
 
 // (Optional) Use proxy behind GFW
@@ -8,7 +9,7 @@ const httpsAgent = new HttpsProxyAgent({ host: "127.0.0.1", port: "7891" });
 axios = axios.create({ httpsAgent });
 
 // copy-paste your URL provided in your Alchemy.com dashboard
-const ALCHEMY_URL = "https://eth-mainnet.g.alchemy.com/v2/your-api-key";
+const ALCHEMY_URL = "https://eth-mainnet.g.alchemy.com/v2/4DdKxdQMB6xxPd-SjpQan_mCW7Q1zT6g/";
 
 axios.post(ALCHEMY_URL, {
   jsonrpc: "2.0",
@@ -94,3 +95,24 @@ function verifyContractAddressPromiseWay(address, addressName) {
 
 verifyContractAddress("0x77777feddddffc19ff86db637967013e6c6a116c", "TORN Contract");
 verifyContractAddressPromiseWay('0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045', "Vitalik's wallet");
+
+// https://docs.alchemy.com/docs/how-to-get-eth-balance-at-a-point-in-time
+// https://docs.alchemy.com/reference/eth-getbalance
+// https://docs.ethers.org/v5/api/utils/display-logic/#utils-formatEther
+axios.post(ALCHEMY_URL, {
+  jsonrpc: "2.0",
+  id: 1,
+  method: "eth_getBalance",
+  params: [
+    "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045", // "vitalik.eth"
+    "latest",
+  ]
+}).then((response) => {
+  // return parseInt(response.data.result, 16);
+  return response.data.result;
+}).then((balance) => {
+  const balance_eth = formatEther(balance);
+  console.log(`Vitalik's balance is: ${balance_eth} ETH (original ${parseInt(balance, 16)})`);
+});
+
+// TODO: figure out how to use proxy with Alchemy SDK
