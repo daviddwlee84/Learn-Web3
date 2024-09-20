@@ -32,3 +32,7 @@ Learning Web3 from scratch
   - secp.recoverPublicKey
 - [brix/crypto-js: JavaScript library of crypto standards.](https://github.com/brix/crypto-js)
   - SHA256
+
+---
+
+- [Node.js — Download Node.js®](https://nodejs.org/en/download/package-manager)
