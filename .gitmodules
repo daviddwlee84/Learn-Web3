@@ -7,3 +7,6 @@
 [submodule "Courses/AlchemyUniversity/Learn_Solidity_Syntax/presentations"]
 	path = Courses/AlchemyUniversity/Learn_Solidity_Syntax/presentations
 	url = https://github.com/alchemyplatform/learn-solidity-presentations.git
+[submodule "lib/forge-std"]
+	path = lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
