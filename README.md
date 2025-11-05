@@ -36,3 +36,4 @@ Learning Web3 from scratch
 ---
 
 - [Node.js — Download Node.js®](https://nodejs.org/en/download/package-manager)
+- `forge install foundry-rs/forge-std`
