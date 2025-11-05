@@ -26,4 +26,6 @@ forge init --no-git .
 # copied Example.sol & delete scripts
 forge compile
 forge test
+# show logs
+forge test -vv
 ```
